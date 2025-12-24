@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import {v2 as cloudinary} from "cloudinary";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import { errorMiddleware } from './middlewares/error.js';
 import { connectDB } from './utils/features.js';
@@ -20,6 +22,9 @@ import AdminRoute from './routes/admin.js';
 import chatRoute from './routes/chat.js';
 import userRoute from './routes/user.js';
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config({
     path:'./.env',
@@ -59,9 +64,15 @@ app.use('/api/v1/user',userRoute);
 app.use('/api/v1/chat',chatRoute);
 app.use('/api/v1/admin',AdminRoute)
 
-app.get('/',(req,res)=>{
-    res.send('helo world')
+app.use(express.static(path.join(__dirname, "../dist"))); 
+
+// 2. The Catch-All Route: Serves index.html for any other request (like /chat, /login)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
+// ---------------------------
+
+app.use(errorMiddleware);
 
 
 
