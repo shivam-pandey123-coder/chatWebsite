@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cd ../Frontend-of-chat-website && npm install && npm run build",
+    "postinstall": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
