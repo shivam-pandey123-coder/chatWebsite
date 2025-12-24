@@ -64,11 +64,11 @@ app.use('/api/v1/user',userRoute);
 app.use('/api/v1/chat',chatRoute);
 app.use('/api/v1/admin',AdminRoute)
 
-app.use(express.static(path.join(__dirname, "../dist"))); 
+app.use(express.static(path.join(__dirname, "../Frontend-of-chat-website/dist"))); 
 
 // 2. The Catch-All Route: Serves index.html for any other request (like /chat, /login)
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../dist/index.html"));
+    res.sendFile(path.join(__dirname, "../Frontend-of-chat-website/dist/index.html"));
 });
 // ---------------------------
 
