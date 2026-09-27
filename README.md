@@ -37,7 +37,7 @@ A full-stack real-time chat application built with the **MERN Stack** (MongoDB, 
 ### Frontend:
 - **React.js** - UI library for building interactive components
 - **Tailwind CSS** - Utility-first CSS framework for styling
-- **Axios** - HTTP client for API requests
+- **Redux ToolKit** - It uses for handling the api request 
 - **Socket.io-client** - Real-time communication library
 - **Vite** - Next-generation frontend tooling (Fast builds and HMR)
 
